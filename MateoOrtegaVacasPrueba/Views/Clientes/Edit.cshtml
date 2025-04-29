@@ -12,41 +12,36 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="idCliente" />
+            <input type="hidden" asp-for="IdCliente" />
             <div class="form-group">
-                <label asp-for="nombreCliente" class="control-label"></label>
-                <input asp-for="nombreCliente" class="form-control" />
-                <span asp-validation-for="nombreCliente" class="text-danger"></span>
+                <label asp-for="NombreCliente" class="control-label"></label>
+                <input asp-for="NombreCliente" class="form-control" />
+                <span asp-validation-for="NombreCliente" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="fechaRegistro" class="control-label"></label>
-                <input asp-for="fechaRegistro" class="form-control" />
-                <span asp-validation-for="fechaRegistro" class="text-danger"></span>
+                <label asp-for="TotalGastos" class="control-label"></label>
+                <input asp-for="TotalGastos" class="form-control" />
+                <span asp-validation-for="TotalGastos" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="reservaVigente" /> @Html.DisplayNameFor(model => model.reservaVigente)
+                    <input class="form-check-input" asp-for="ReservaVigente" /> @Html.DisplayNameFor(model => model.ReservaVigente)
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="totalGastos" class="control-label"></label>
-                <input asp-for="totalGastos" class="form-control" />
-                <span asp-validation-for="totalGastos" class="text-danger"></span>
+                <label asp-for="FechaRegistro" class="control-label"></label>
+                <input asp-for="FechaRegistro" class="form-control" />
+                <span asp-validation-for="FechaRegistro" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="mateoOrtegaVacas" class="control-label"></label>
-                <input asp-for="mateoOrtegaVacas" class="form-control" />
-                <span asp-validation-for="mateoOrtegaVacas" class="text-danger"></span>
+                <label asp-for="CordovaS" class="control-label"></label>
+                <input asp-for="CordovaS" class="form-control" />
+                <span asp-validation-for="CordovaS" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="idRecompensa" class="control-label"></label>
-                <select asp-for="idRecompensa" class="form-control" asp-items="ViewBag.idRecompensa"></select>
-                <span asp-validation-for="idRecompensa" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="idReserva" class="control-label"></label>
-                <select asp-for="idReserva" class="form-control" asp-items="ViewBag.idReserva"></select>
-                <span asp-validation-for="idReserva" class="text-danger"></span>
+                <label asp-for="PuntosAcumulados" class="control-label"></label>
+                <input asp-for="PuntosAcumulados" class="form-control" />
+                <span asp-validation-for="PuntosAcumulados" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

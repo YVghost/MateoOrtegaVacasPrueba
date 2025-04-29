@@ -21,8 +21,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
         // GET: Clientes
         public async Task<IActionResult> Index()
         {
-            var mateoBDC = _context.Cliente.Include(c => c.Recompensa).Include(c => c.Reserva);
-            return View(await mateoBDC.ToListAsync());
+            return View(await _context.Cliente.ToListAsync());
         }
 
         // GET: Clientes/Details/5
@@ -34,9 +33,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
             }
 
             var cliente = await _context.Cliente
-                .Include(c => c.Recompensa)
-                .Include(c => c.Reserva)
-                .FirstOrDefaultAsync(m => m.idCliente == id);
+                .FirstOrDefaultAsync(m => m.IdCliente == id);
             if (cliente == null)
             {
                 return NotFound();
@@ -48,8 +45,6 @@ namespace MateoOrtegaVacasPrueba.Controllers
         // GET: Clientes/Create
         public IActionResult Create()
         {
-            ViewData["idRecompensa"] = new SelectList(_context.Set<Recompensa>(), "idRecompensa", "idRecompensa");
-            ViewData["idReserva"] = new SelectList(_context.Set<Reserva>(), "idReserva", "idReserva");
             return View();
         }
 
@@ -58,7 +53,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idCliente,nombreCliente,fechaRegistro,reservaVigente,totalGastos,mateoOrtegaVacas,idRecompensa,idReserva")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("IdCliente,NombreCliente,TotalGastos,ReservaVigente,FechaRegistro,CordovaS,PuntosAcumulados")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -66,8 +61,6 @@ namespace MateoOrtegaVacasPrueba.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["idRecompensa"] = new SelectList(_context.Set<Recompensa>(), "idRecompensa", "idRecompensa", cliente.idRecompensa);
-            ViewData["idReserva"] = new SelectList(_context.Set<Reserva>(), "idReserva", "idReserva", cliente.idReserva);
             return View(cliente);
         }
 
@@ -84,8 +77,6 @@ namespace MateoOrtegaVacasPrueba.Controllers
             {
                 return NotFound();
             }
-            ViewData["idRecompensa"] = new SelectList(_context.Set<Recompensa>(), "idRecompensa", "idRecompensa", cliente.idRecompensa);
-            ViewData["idReserva"] = new SelectList(_context.Set<Reserva>(), "idReserva", "idReserva", cliente.idReserva);
             return View(cliente);
         }
 
@@ -94,9 +85,9 @@ namespace MateoOrtegaVacasPrueba.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("idCliente,nombreCliente,fechaRegistro,reservaVigente,totalGastos,mateoOrtegaVacas,idRecompensa,idReserva")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCliente,NombreCliente,TotalGastos,ReservaVigente,FechaRegistro,CordovaS,PuntosAcumulados")] Cliente cliente)
         {
-            if (id != cliente.idCliente)
+            if (id != cliente.IdCliente)
             {
                 return NotFound();
             }
@@ -110,7 +101,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ClienteExists(cliente.idCliente))
+                    if (!ClienteExists(cliente.IdCliente))
                     {
                         return NotFound();
                     }
@@ -121,8 +112,6 @@ namespace MateoOrtegaVacasPrueba.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["idRecompensa"] = new SelectList(_context.Set<Recompensa>(), "idRecompensa", "idRecompensa", cliente.idRecompensa);
-            ViewData["idReserva"] = new SelectList(_context.Set<Reserva>(), "idReserva", "idReserva", cliente.idReserva);
             return View(cliente);
         }
 
@@ -135,9 +124,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
             }
 
             var cliente = await _context.Cliente
-                .Include(c => c.Recompensa)
-                .Include(c => c.Reserva)
-                .FirstOrDefaultAsync(m => m.idCliente == id);
+                .FirstOrDefaultAsync(m => m.IdCliente == id);
             if (cliente == null)
             {
                 return NotFound();
@@ -163,7 +150,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
 
         private bool ClienteExists(int id)
         {
-            return _context.Cliente.Any(e => e.idCliente == id);
+            return _context.Cliente.Any(e => e.IdCliente == id);
         }
     }
 }

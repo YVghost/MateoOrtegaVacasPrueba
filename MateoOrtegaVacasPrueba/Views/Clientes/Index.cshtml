@@ -13,25 +13,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.nombreCliente)
+                @Html.DisplayNameFor(model => model.NombreCliente)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fechaRegistro)
+                @Html.DisplayNameFor(model => model.TotalGastos)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.reservaVigente)
+                @Html.DisplayNameFor(model => model.ReservaVigente)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.totalGastos)
+                @Html.DisplayNameFor(model => model.FechaRegistro)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.mateoOrtegaVacas)
+                @Html.DisplayNameFor(model => model.CordovaS)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Recompensa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Reserva)
+                @Html.DisplayNameFor(model => model.PuntosAcumulados)
             </th>
             <th></th>
         </tr>
@@ -40,30 +37,27 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.nombreCliente)
+                @Html.DisplayFor(modelItem => item.NombreCliente)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.fechaRegistro)
+                @Html.DisplayFor(modelItem => item.TotalGastos)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.reservaVigente)
+                @Html.DisplayFor(modelItem => item.ReservaVigente)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.totalGastos)
+                @Html.DisplayFor(modelItem => item.FechaRegistro)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.mateoOrtegaVacas)
+                @Html.DisplayFor(modelItem => item.CordovaS)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Recompensa.idRecompensa)
+                @Html.DisplayFor(modelItem => item.PuntosAcumulados)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Reserva.idReserva)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.idCliente">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.idCliente">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.idCliente">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdCliente">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdCliente">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdCliente">Delete</a>
             </td>
         </tr>
 }

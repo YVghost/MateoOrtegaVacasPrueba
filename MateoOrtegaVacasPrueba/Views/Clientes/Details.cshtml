@@ -11,50 +11,44 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.nombreCliente)
+            @Html.DisplayNameFor(model => model.NombreCliente)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.nombreCliente)
+            @Html.DisplayFor(model => model.NombreCliente)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.fechaRegistro)
+            @Html.DisplayNameFor(model => model.TotalGastos)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.fechaRegistro)
+            @Html.DisplayFor(model => model.TotalGastos)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.reservaVigente)
+            @Html.DisplayNameFor(model => model.ReservaVigente)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.reservaVigente)
+            @Html.DisplayFor(model => model.ReservaVigente)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.totalGastos)
+            @Html.DisplayNameFor(model => model.FechaRegistro)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.totalGastos)
+            @Html.DisplayFor(model => model.FechaRegistro)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.mateoOrtegaVacas)
+            @Html.DisplayNameFor(model => model.CordovaS)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.mateoOrtegaVacas)
+            @Html.DisplayFor(model => model.CordovaS)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Recompensa)
+            @Html.DisplayNameFor(model => model.PuntosAcumulados)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Recompensa.idRecompensa)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Reserva)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Reserva.idReserva)
+            @Html.DisplayFor(model => model.PuntosAcumulados)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.idCliente">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.IdCliente">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

@@ -1,37 +1,43 @@
-﻿using System.ComponentModel;
+﻿using MateoOrtegaVacasPrueba.Models;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.CodeAnalysis;
 
 namespace MateoOrtegaVacasPrueba.Models
 {
     public class Cliente
     {
         [Key]
-        [MaxLength(10)]
-        public int idCliente { get; set; }
+        public int IdCliente { get; set; }
+
+        [Required(ErrorMessage = "El nombre es obligatorio")]
+        [DisplayName("Nombre Completo")]
+        [StringLength(100, MinimumLength = 5, ErrorMessage = "Debe tener entre 5 y 100 caracteres")]
+        public string NombreCliente { get; set; }
 
         [Required]
-        [DisplayName ("Ingresar un Nombre y Apellido")]
-        public string nombreCliente { get; set; }
-        
-        public DateTime fechaRegistro { get; set; }
-        public bool reservaVigente { get; set; }
+        [Range(0, 1000000, ErrorMessage = "Total de gastos debe ser positivo")]
+        public decimal TotalGastos { get; set; }
 
-        [AllowNull]
-        public float totalGastos { get; set; }
-        public string mateoOrtegaVacas { get; set; }
+        [Required]
+        public bool ReservaVigente { get; set; }
 
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayName("Fecha de Registro")]
+        public DateTime FechaRegistro { get; set; }
 
-        [AllowNull]
-        public int idRecompensa { get; set; }
-        [ForeignKey("idRecompensa")]
-        public Recompensa? Recompensa { get; set; }
+        [DisplayName("Código Referido (CordovaS)")]
+        [MaxLength(15)]
+        public string MateoORtegaVacas { get; set; }
 
-        [AllowNull]
-        public int idReserva { get; set; }
-        [ForeignKey("idReserva")]
-        public Reserva? Reserva { get; set; }
+        // Relaciones
+        public ICollection<Reserva>? Reservas { get; set; }
 
+        // Plan de recompensas
+        public int PuntosAcumulados { get; set; }
+
+        [NotMapped]
+        public string TipoRecompensa => PuntosAcumulados < 500 ? "SILVER" : "GOLD";
     }
 }

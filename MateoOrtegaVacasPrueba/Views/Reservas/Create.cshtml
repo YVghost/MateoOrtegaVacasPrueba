@@ -13,19 +13,23 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="fechaEntrada" class="control-label"></label>
-                <input asp-for="fechaEntrada" class="form-control" />
-                <span asp-validation-for="fechaEntrada" class="text-danger"></span>
+                <label asp-for="FechaEntrada" class="control-label"></label>
+                <input asp-for="FechaEntrada" class="form-control" />
+                <span asp-validation-for="FechaEntrada" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="fechaSalida" class="control-label"></label>
-                <input asp-for="fechaSalida" class="form-control" />
-                <span asp-validation-for="fechaSalida" class="text-danger"></span>
+                <label asp-for="FechaSalida" class="control-label"></label>
+                <input asp-for="FechaSalida" class="form-control" />
+                <span asp-validation-for="FechaSalida" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="pagoreserva" class="control-label"></label>
-                <input asp-for="pagoreserva" class="form-control" />
-                <span asp-validation-for="pagoreserva" class="text-danger"></span>
+                <label asp-for="PagoReserva" class="control-label"></label>
+                <input asp-for="PagoReserva" class="form-control" />
+                <span asp-validation-for="PagoReserva" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClienteId" class="control-label"></label>
+                <select asp-for="ClienteId" class ="form-control" asp-items="ViewBag.ClienteId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

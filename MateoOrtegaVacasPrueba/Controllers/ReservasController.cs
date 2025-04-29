@@ -21,7 +21,8 @@ namespace MateoOrtegaVacasPrueba.Controllers
         // GET: Reservas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Reserva.ToListAsync());
+            var mateoBDC = _context.Reserva.Include(r => r.Cliente);
+            return View(await mateoBDC.ToListAsync());
         }
 
         // GET: Reservas/Details/5
@@ -33,7 +34,8 @@ namespace MateoOrtegaVacasPrueba.Controllers
             }
 
             var reserva = await _context.Reserva
-                .FirstOrDefaultAsync(m => m.idReserva == id);
+                .Include(r => r.Cliente)
+                .FirstOrDefaultAsync(m => m.IdReserva == id);
             if (reserva == null)
             {
                 return NotFound();
@@ -45,6 +47,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
         // GET: Reservas/Create
         public IActionResult Create()
         {
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "IdCliente", "NombreCliente");
             return View();
         }
 
@@ -53,7 +56,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idReserva,fechaEntrada,fechaSalida,pagoreserva")] Reserva reserva)
+        public async Task<IActionResult> Create([Bind("IdReserva,FechaEntrada,FechaSalida,PagoReserva,ClienteId")] Reserva reserva)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +64,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "IdCliente", "NombreCliente", reserva.ClienteId);
             return View(reserva);
         }
 
@@ -77,6 +81,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
             {
                 return NotFound();
             }
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "IdCliente", "NombreCliente", reserva.ClienteId);
             return View(reserva);
         }
 
@@ -85,9 +90,9 @@ namespace MateoOrtegaVacasPrueba.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("idReserva,fechaEntrada,fechaSalida,pagoreserva")] Reserva reserva)
+        public async Task<IActionResult> Edit(int id, [Bind("IdReserva,FechaEntrada,FechaSalida,PagoReserva,ClienteId")] Reserva reserva)
         {
-            if (id != reserva.idReserva)
+            if (id != reserva.IdReserva)
             {
                 return NotFound();
             }
@@ -101,7 +106,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ReservaExists(reserva.idReserva))
+                    if (!ReservaExists(reserva.IdReserva))
                     {
                         return NotFound();
                     }
@@ -112,6 +117,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "IdCliente", "NombreCliente", reserva.ClienteId);
             return View(reserva);
         }
 
@@ -124,7 +130,8 @@ namespace MateoOrtegaVacasPrueba.Controllers
             }
 
             var reserva = await _context.Reserva
-                .FirstOrDefaultAsync(m => m.idReserva == id);
+                .Include(r => r.Cliente)
+                .FirstOrDefaultAsync(m => m.IdReserva == id);
             if (reserva == null)
             {
                 return NotFound();
@@ -150,7 +157,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
 
         private bool ReservaExists(int id)
         {
-            return _context.Reserva.Any(e => e.idReserva == id);
+            return _context.Reserva.Any(e => e.IdReserva == id);
         }
     }
 }
