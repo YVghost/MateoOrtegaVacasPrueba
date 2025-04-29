@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MateoBDC>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MateoBDC") ?? throw new InvalidOperationException("Connection string 'MateoBDC' not found.")));
-builder.Services.AddDbContext<MateoOrtegaVacasPruebaBD>(options =>
+builder.Services.AddDbContext<MateoBDC>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MateoOrtegaVacasPruebaBD") ?? throw new InvalidOperationException("Connection string 'MateoOrtegaVacasPruebaBD' not found.")));
 
 // Add services to the container.
