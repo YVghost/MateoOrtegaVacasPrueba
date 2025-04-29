@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MateoOrtegaVacasPrueba.Models.Reserva>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaEntrada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaSalida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pagoreserva)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaEntrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaSalida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pagoreserva)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.idReserva">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.idReserva">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.idReserva">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
