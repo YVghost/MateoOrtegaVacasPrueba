@@ -1,5 +1,4 @@
-﻿using MateoOrtegaVacasPrueba.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MateoOrtegaVacasPrueba.Models

@@ -1,18 +1,30 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MateoOrtegaVacasPrueba.Models
 {
     public class Recompensa
     {
         [Key]
-        public int idRecompensa { get; set; }
+        public int IdRecompensa { get; set; }
 
-        public string nombre { get; set; }
+        [Required]
+        public string Nombre { get; set; }
 
-        public DateTime fechaInicio { get; set; }
+        [Required]
+        public DateTime FechaInicio { get; set; }
 
-        public int puntos { get; set; }
+        [Required]
+        public int Puntos { get; set; }
 
-        public string tipoRecompensa { get; set; }
+        [Required]
+        public string TipoRecompensa { get; set; }
+
+        // Relación 1:1 con Cliente
+        [Required]
+        public int ClienteId { get; set; }
+
+        [ForeignKey("ClienteId")]
+        public Cliente Cliente { get; set; }
     }
 }

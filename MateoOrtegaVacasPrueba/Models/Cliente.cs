@@ -1,5 +1,4 @@
-﻿using MateoOrtegaVacasPrueba.Models;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -29,12 +28,14 @@ namespace MateoOrtegaVacasPrueba.Models
 
         [DisplayName("Código Referido (CordovaS)")]
         [MaxLength(15)]
-        public string MateoORtegaVacas { get; set; }
+        public string MateoOrtegaVacas { get; set; }
 
         // Relaciones
         public ICollection<Reserva>? Reservas { get; set; }
 
-        // Plan de recompensas
+        public Recompensa? Recompensa { get; set; }
+
+        // Puntos
         public int PuntosAcumulados { get; set; }
 
         [NotMapped]

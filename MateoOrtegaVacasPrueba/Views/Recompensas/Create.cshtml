@@ -13,24 +13,28 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="nombre" class="control-label"></label>
-                <input asp-for="nombre" class="form-control" />
-                <span asp-validation-for="nombre" class="text-danger"></span>
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="fechaInicio" class="control-label"></label>
-                <input asp-for="fechaInicio" class="form-control" />
-                <span asp-validation-for="fechaInicio" class="text-danger"></span>
+                <label asp-for="FechaInicio" class="control-label"></label>
+                <input asp-for="FechaInicio" class="form-control" />
+                <span asp-validation-for="FechaInicio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="puntos" class="control-label"></label>
-                <input asp-for="puntos" class="form-control" />
-                <span asp-validation-for="puntos" class="text-danger"></span>
+                <label asp-for="Puntos" class="control-label"></label>
+                <input asp-for="Puntos" class="form-control" />
+                <span asp-validation-for="Puntos" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="tipoRecompensa" class="control-label"></label>
-                <input asp-for="tipoRecompensa" class="form-control" />
-                <span asp-validation-for="tipoRecompensa" class="text-danger"></span>
+                <label asp-for="TipoRecompensa" class="control-label"></label>
+                <input asp-for="TipoRecompensa" class="form-control" />
+                <span asp-validation-for="TipoRecompensa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClienteId" class="control-label"></label>
+                <select asp-for="ClienteId" class ="form-control" asp-items="ViewBag.ClienteId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

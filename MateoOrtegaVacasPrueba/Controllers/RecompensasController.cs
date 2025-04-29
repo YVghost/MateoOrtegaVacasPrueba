@@ -21,7 +21,8 @@ namespace MateoOrtegaVacasPrueba.Controllers
         // GET: Recompensas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Recompensa.ToListAsync());
+            var mateoBDC = _context.Recompensa.Include(r => r.Cliente);
+            return View(await mateoBDC.ToListAsync());
         }
 
         // GET: Recompensas/Details/5
@@ -33,7 +34,8 @@ namespace MateoOrtegaVacasPrueba.Controllers
             }
 
             var recompensa = await _context.Recompensa
-                .FirstOrDefaultAsync(m => m.idRecompensa == id);
+                .Include(r => r.Cliente)
+                .FirstOrDefaultAsync(m => m.IdRecompensa == id);
             if (recompensa == null)
             {
                 return NotFound();
@@ -45,6 +47,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
         // GET: Recompensas/Create
         public IActionResult Create()
         {
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "IdCliente", "NombreCliente");
             return View();
         }
 
@@ -53,7 +56,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idRecompensa,nombre,fechaInicio,puntos,tipoRecompensa")] Recompensa recompensa)
+        public async Task<IActionResult> Create([Bind("IdRecompensa,Nombre,FechaInicio,Puntos,TipoRecompensa,ClienteId")] Recompensa recompensa)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +64,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "IdCliente", "NombreCliente", recompensa.ClienteId);
             return View(recompensa);
         }
 
@@ -77,6 +81,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
             {
                 return NotFound();
             }
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "IdCliente", "NombreCliente", recompensa.ClienteId);
             return View(recompensa);
         }
 
@@ -85,9 +90,9 @@ namespace MateoOrtegaVacasPrueba.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("idRecompensa,nombre,fechaInicio,puntos,tipoRecompensa")] Recompensa recompensa)
+        public async Task<IActionResult> Edit(int id, [Bind("IdRecompensa,Nombre,FechaInicio,Puntos,TipoRecompensa,ClienteId")] Recompensa recompensa)
         {
-            if (id != recompensa.idRecompensa)
+            if (id != recompensa.IdRecompensa)
             {
                 return NotFound();
             }
@@ -101,7 +106,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RecompensaExists(recompensa.idRecompensa))
+                    if (!RecompensaExists(recompensa.IdRecompensa))
                     {
                         return NotFound();
                     }
@@ -112,6 +117,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "IdCliente", "NombreCliente", recompensa.ClienteId);
             return View(recompensa);
         }
 
@@ -124,7 +130,8 @@ namespace MateoOrtegaVacasPrueba.Controllers
             }
 
             var recompensa = await _context.Recompensa
-                .FirstOrDefaultAsync(m => m.idRecompensa == id);
+                .Include(r => r.Cliente)
+                .FirstOrDefaultAsync(m => m.IdRecompensa == id);
             if (recompensa == null)
             {
                 return NotFound();
@@ -150,7 +157,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
 
         private bool RecompensaExists(int id)
         {
-            return _context.Recompensa.Any(e => e.idRecompensa == id);
+            return _context.Recompensa.Any(e => e.IdRecompensa == id);
         }
     }
 }

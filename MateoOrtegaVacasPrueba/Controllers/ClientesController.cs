@@ -53,7 +53,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCliente,NombreCliente,TotalGastos,ReservaVigente,FechaRegistro,CordovaS,PuntosAcumulados")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("IdCliente,NombreCliente,TotalGastos,ReservaVigente,FechaRegistro,MateoOrtegaVacas,PuntosAcumulados")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace MateoOrtegaVacasPrueba.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCliente,NombreCliente,TotalGastos,ReservaVigente,FechaRegistro,CordovaS,PuntosAcumulados")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCliente,NombreCliente,TotalGastos,ReservaVigente,FechaRegistro,MateoOrtegaVacas,PuntosAcumulados")] Cliente cliente)
         {
             if (id != cliente.IdCliente)
             {
