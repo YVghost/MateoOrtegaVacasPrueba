@@ -12,5 +12,6 @@ namespace MateoOrtegaVacasPrueba.Models
         public int puntos { set; get; }
         public string tipoRecompensa { set; get; }
 
+
     }
 }

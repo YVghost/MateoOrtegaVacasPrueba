@@ -22,10 +22,13 @@ namespace MateoOrtegaVacasPrueba.Models
         public float totalGastos { get; set; }
         public string mateoOrtegaVacas { get; set; }
 
+
+        [AllowNull]
         public int idRecompensa { get; set; }
         [ForeignKey("idRecompensa")]
         public Recompensa? Recompensa { get; set; }
 
+        [AllowNull]
         public int idReserva { get; set; }
         [ForeignKey("idReserva")]
         public Reserva? Reserva { get; set; }
