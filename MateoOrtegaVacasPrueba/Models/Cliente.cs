@@ -26,7 +26,6 @@ namespace MateoOrtegaVacasPrueba.Models
         [DisplayName("Fecha de Registro")]
         public DateTime FechaRegistro { get; set; }
 
-        [DisplayName("Código Referido (CordovaS)")]
         [MaxLength(15)]
         public string MateoOrtegaVacas { get; set; }
 
